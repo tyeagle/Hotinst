@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Interop;
+using HOTINST.COMMON;
 using HOTINST.COMMON.Win32;
 
 namespace HOTINST.COMMON.Controls.Helper

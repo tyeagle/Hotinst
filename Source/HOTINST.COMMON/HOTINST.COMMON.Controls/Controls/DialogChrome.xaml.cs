@@ -1,9 +1,10 @@
-﻿using System;
+﻿using HOTINST.COMMON.Win32;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using HOTINST.COMMON.Win32;
+
 
 namespace HOTINST.COMMON.Controls.Controls
 {

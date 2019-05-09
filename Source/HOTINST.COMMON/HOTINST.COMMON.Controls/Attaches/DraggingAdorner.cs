@@ -23,10 +23,10 @@ using HOTINST.COMMON.Win32;
 
 namespace HOTINST.COMMON.Controls.Attaches
 {
-	/// <summary>
-	/// 拖动时的装饰器
-	/// </summary>
-	public class DraggingAdorner : Adorner
+    /// <summary>
+    /// 拖动时的装饰器
+    /// </summary>
+    public class DraggingAdorner : Adorner
 	{
 		#region fields
 
