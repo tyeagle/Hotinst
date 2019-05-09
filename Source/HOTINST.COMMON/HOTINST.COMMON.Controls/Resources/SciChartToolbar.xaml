@@ -1,0 +1,53 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                    xmlns:chart="clr-namespace:HOTINST.COMMON.Controls.Net4._0.Controls.Chart">
+	<ObjectDataProvider x:Key="ExportTypeSourceProvider" ObjectType="system:Enum" MethodName="GetValues">
+		<ObjectDataProvider.MethodParameters>
+			<x:Type TypeName="s:ExportType"/>
+		</ObjectDataProvider.MethodParameters>
+	</ObjectDataProvider>
+
+	<Style TargetType="{x:Type chart:SciChartToolbar}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type chart:SciChartToolbar}">
+					<dxb:ToolBarControl ShowBackground="False" GlyphSize="Small" AllowCustomizationMenu="False">
+						<dxb:BarButtonItem IsVisible="False" Command="{Binding CmdCanMouseWheel,RelativeSource={RelativeSource TemplatedParent}}"/>
+						<dxb:BarButtonItem IsVisible="False" Command="{Binding CmdCanShowRollover,RelativeSource={RelativeSource TemplatedParent}}"/>
+						<dxb:BarButtonItem Content="加载缩略图" IsVisible="{Binding ShowLoadThumbnailButton,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Command="{TemplateBinding CmdLoadThumbnail}" CommandParameter="{TemplateBinding CmdLoadThumbnailParameter}" Glyph="{dx:DXImage Image=Download_16x16.png}"/>
+						<dxb:BarButtonItem Content="刷新波形" IsVisible="{Binding ShowRefreshDetailButton,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Command="{TemplateBinding CmdRefreshDetail}" CommandParameter="{TemplateBinding CmdRefreshDetailParameter}" Glyph="{dx:DXImageOffice2013 Image=Refresh2_16x16.png}"/>
+						<dxb:BarItemSeparator/>
+						<dxb:BarCheckItem Content="共享坐标系" IsChecked="{Binding IsSharedAxies,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Glyph="{dx:DXImage Image=Axes_16x16.png}"/>
+						<dxb:BarItemSeparator/>
+						<dxb:BarButtonItem Content="缩放还原" Command="{Binding TargetSurface.AnimateZoomExtentsCommand,RelativeSource={RelativeSource TemplatedParent}}" Glyph="{dx:DXImage Image=Zoom100Percent_16x16.png}"/>
+						<dxb:BarCheckItem Content="框选缩放" Hint="用左键框选或滚动滚轮进行缩放，按住Ctrl上下移动，按住Shift左右移动" GroupIndex="{TemplateBinding ToolBarId}" IsChecked="{Binding IsRubberBandZoomEnabled,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" CloseSubMenuOnClick="True" Glyph="{dx:DXImage Image=MarqueeZoom_16x16.png}"/>
+						<dxb:BarCheckItem Content="拖动缩放" Hint="按住左键拖动或滚动滚轮进行缩放，按住Ctrl上下移动，按住Shift左右移动" IsChecked="{Binding IsDragZoomEnabled,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" GroupIndex="{TemplateBinding ToolBarId}" Glyph="{dx:DXImage Image=TouchMode_16x16.png}"/>
+						<dxb:BarCheckItem Content="只缩放横轴" IsChecked="{Binding IsZoomXOnly,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Glyph="{dx:DXImage Image=BottomCenterHorizontalInside_16x16.png}"/>
+						<dxb:BarCheckItem Content="横轴自动范围" Hint="此模式下缩放功能失效" GroupIndex="{TemplateBinding ToolBarId}" IsChecked="{Binding IsAxisAutoRange,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Glyph="{dx:DXImage Image=HorizontalAxisLeftToRight_16x16.png}"/>
+						<dxb:BarItemSeparator/>
+						<dxb:BarCheckItem Content="显示图例" IsChecked="{Binding ShowLegend,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Glyph="{dx:DXImage Image=ChartsShowLegend_16x16.png}"/>
+						<dxb:BarSplitCheckItem Content="显示光标值" IsChecked="{Binding IsRolloverModifierEnabled,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Glyph="{dx:DXImage Image=LegendLeftOverlay_16x16.png}">
+							<dxb:BarSplitCheckItem.PopupControl>
+								<dxb:PopupMenuInfo>
+									<dxb:BarCheckItem Content="使用插值" IsChecked="{Binding UseInterpolation,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+								</dxb:PopupMenuInfo>
+							</dxb:BarSplitCheckItem.PopupControl>
+						</dxb:BarSplitCheckItem>
+						<dxb:BarItemSeparator/>
+						<dxb:BarButtonItem Content="导出图片" Command="{Binding CmdExportImg,RelativeSource={RelativeSource TemplatedParent}}" Glyph="{dx:DXImageOffice2013 Image=ImportImage_16x16.png}"/>
+						<dxb:BarEditItem Content="导出图片格式: " EditWidth="60" EditValue="{TemplateBinding ExportImgType}">
+							<dxb:BarEditItem.EditSettings>
+								<dxe:ComboBoxEditSettings IsTextEditable="False" ItemsSource="{Binding Source={StaticResource ExportTypeSourceProvider}}"/>
+							</dxb:BarEditItem.EditSettings>
+						</dxb:BarEditItem>
+					</dxb:ToolBarControl>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

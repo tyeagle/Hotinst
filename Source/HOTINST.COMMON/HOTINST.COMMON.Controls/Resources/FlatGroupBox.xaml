@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:HOTINST.COMMON.Controls.Converters"
+                    xmlns:layout="clr-namespace:HOTINST.COMMON.Controls.Controls.Layout">
+	<converters:GetTranslucentBrushConverter x:Key="BrushConverter"/>
+	<converters:GoupBoxCornerRadiusConverter x:Key="CornerConverter"/>
+	<converters:GetDeeperBrushConverter x:Key="GetDeeperBrushCvt"/>
+	<BooleanToVisibilityConverter x:Key="BoolToVisilityCvt"/>
+	
+	<Storyboard x:Key="SbOpen" TargetName="Rotate" TargetProperty="Angle">
+		<DoubleAnimation To="90" Duration="0:0:0.18"/>
+	</Storyboard>
+
+	<Storyboard x:Key="SbClose" TargetName="Rotate" TargetProperty="Angle">
+		<DoubleAnimation To="0" Duration="0:0:0.18"/>
+	</Storyboard>
+
+	<ControlTemplate x:Key="ToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+		<Grid SnapsToDevicePixels="True">
+			<Path x:Name="Path" StrokeThickness="1" Data="M3,3 7,8 3,13 M8,3 12,8 8,13" SnapsToDevicePixels="True"
+				  Stroke="{Binding GroupBorderBrush,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type layout:FlatGroupBox}}}">
+				<Path.RenderTransform>
+					<RotateTransform x:Name="Rotate" CenterX="8" CenterY="8" Angle="0"/>
+				</Path.RenderTransform>
+			</Path>
+			<Rectangle Width="14" Height="14" Fill="Transparent" Cursor="Hand"/>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter TargetName="Path" Property="Stroke" Value="{Binding GroupBorderBrush,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type layout:FlatGroupBox}},Converter={StaticResource GetDeeperBrushCvt}}"/>
+			</Trigger>
+			<Trigger Property="IsChecked" Value="True">
+				<Trigger.EnterActions>
+					<BeginStoryboard Storyboard="{StaticResource SbOpen}"/>
+				</Trigger.EnterActions>
+				<Trigger.ExitActions>
+					<BeginStoryboard Storyboard="{StaticResource SbClose}"/>
+				</Trigger.ExitActions>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<Style TargetType="{x:Type layout:FlatGroupBox}">
+		<Setter Property="GroupBorderBrush" Value="DodgerBlue"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type layout:FlatGroupBox}">
+					<Grid SnapsToDevicePixels="True">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" MinHeight="16"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+
+						<Border Grid.Row="0" Padding="3,1" SnapsToDevicePixels="True" CornerRadius="0"
+								BorderThickness="1" BorderBrush="{TemplateBinding GroupBorderBrush}"
+								Background="{TemplateBinding GroupBorderBrush,Converter={StaticResource BrushConverter}}">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="Auto"/>
+								</Grid.ColumnDefinitions>
+
+								<ContentPresenter Grid.Column="0" HorizontalAlignment="{TemplateBinding HeaderAlignment}" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+
+								<ToggleButton x:Name="PART_AdditionalButton" Grid.Column="1" Cursor="Hand"
+											  Template="{StaticResource ToggleButtonTemplate}"
+											  IsChecked="{Binding IsAdditionalMenuOpen,RelativeSource={RelativeSource TemplatedParent}}"
+											  ContextMenu="{TemplateBinding AdditionalMenu}"
+											  Visibility="{TemplateBinding IsShowAdditionalBtn,Converter={StaticResource BoolToVisilityCvt}}"/>
+							</Grid>
+						</Border>
+
+						<Border Grid.Row="1" BorderThickness="1,0,1,1" SnapsToDevicePixels="True" BorderBrush="{TemplateBinding GroupBorderBrush}" CornerRadius="{TemplateBinding CornerRadius,Converter={StaticResource CornerConverter},ConverterParameter=false}">
+							<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

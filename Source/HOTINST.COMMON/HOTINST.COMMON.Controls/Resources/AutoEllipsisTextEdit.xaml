@@ -1,0 +1,153 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:HOTINST.COMMON.Controls.Converters.Internal"
+                    xmlns:editors="clr-namespace:HOTINST.COMMON.Controls.Controls.Editors">
+	<SolidColorBrush x:Key="NormalBorderBrush" Color="#A8A8A8"/>
+	<SolidColorBrush x:Key="MouseOverBorderBrush" Color="#810079CB"/>
+	<SolidColorBrush x:Key="FocusedBorderBrush" Color="#C60079CB"/>
+	
+	<SolidColorBrush x:Key="BtnNormalForegroundBrsh" Color="#5A5A5A"/>
+	<SolidColorBrush x:Key="BtnMouseOverForegroundBrsh" Color="#0079CB"/>
+	<SolidColorBrush x:Key="BtnPressedForegroundBrsh" Color="DodgerBlue"/>
+
+	<SolidColorBrush x:Key="BtnUnableBackground" Color="#FFAFAFAF"/>
+
+	<Style x:Key="BtnFocusStyle">
+		<Setter Property="Control.Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Rectangle Margin="2" StrokeThickness="1" Stroke="Black" StrokeDashArray="1 2" SnapsToDevicePixels="True"/>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<Style x:Key="BtnDropDownStyle" TargetType="ToggleButton">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Foreground" Value="{StaticResource BtnNormalForegroundBrsh}"/>
+		<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+		<Setter Property="IsChecked" Value="{Binding IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"/>
+		<Setter Property="FocusVisualStyle" Value="{StaticResource BtnFocusStyle}"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border BorderThickness="1,0,0,0" MinWidth="20" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+						<Path x:Name="p" Width="8" Height="4" Stretch="Fill" Fill="{TemplateBinding Button.Foreground}" Data="F1M0,0L8,0 4,4 0,0z" Margin="0,3,0,0" RenderTransformOrigin="0.5, 0.5" SnapsToDevicePixels="True"/>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="ToggleButton.IsChecked" Value="True">
+							<Setter Property="Background" Value="Silver"/>
+							<Setter TargetName="p" Property="Fill" Value="{StaticResource BtnPressedForegroundBrsh}"/>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Foreground" Value="{StaticResource BtnMouseOverForegroundBrsh}"/>
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							<Setter Property="Background" Value="{StaticResource BtnUnableBackground}"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="BtnRegularStyle" TargetType="Button">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Foreground" Value="{StaticResource BtnNormalForegroundBrsh}"/>
+		<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+		<Setter Property="Command" Value="{Binding CmdRegular,RelativeSource={RelativeSource TemplatedParent}}"/>
+		<Setter Property="ToolTip" Value="{Binding BtnRegularTooltip,RelativeSource={RelativeSource TemplatedParent}}"/>
+		<Setter Property="FocusVisualStyle" Value="{StaticResource BtnFocusStyle}"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border BorderThickness="1,0,0,0" MinWidth="20" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+						<Path x:Name="p" Width="10" Height="2" Stretch="Fill" Fill="{TemplateBinding Button.Foreground}" Data="F1M1216,828C1216.55,828 1217,828.448 1217,829 1217,829.552 1216.55,830 1216,830 1215.45,830 1215,829.552 1215,829 1215,828.448 1215.45,828 1216,828z M1220,828C1220.55,828 1221,828.448 1221,829 1221,829.552 1220.55,830 1220,830 1219.45,830 1219,829.552 1219,829 1219,828.448 1219.45,828 1220,828z M1224,828C1224.55,828 1225,828.448 1225,829 1225,829.552 1224.55,830 1224,830 1223.45,830 1223,829.552 1223,829 1223,828.448 1223.45,828 1224,828z" Margin="0,3,0,0" RenderTransformOrigin="0.5, 0.5" SnapsToDevicePixels="True"/>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="Button.IsPressed" Value="True">
+							<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+							<Setter TargetName="p" Property="Fill" Value="{StaticResource BtnPressedForegroundBrsh}"/>
+						</Trigger>
+						<Trigger Property="Button.IsMouseOver" Value="True">
+							<Setter Property="Foreground" Value="{StaticResource BtnMouseOverForegroundBrsh}"/>
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							<Setter Property="Background" Value="{StaticResource BtnUnableBackground}"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<internal:DropShdwWidthConverter x:Key="DropShdwWidthCvt"/>
+	
+	<Style TargetType="editors:AutoEllipsisTextEdit">
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+		<Setter Property="Focusable" Value="False"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border x:Name="bd" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+						<Grid SnapsToDevicePixels="True">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+
+							<editors:TextBoxEllipsis BorderThickness="0" AutoEllipsis="MiddleAndPath" VerticalContentAlignment="Center" Padding="2"
+													 Text="{Binding FullText,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+
+							<ToggleButton x:Name="BtnDropDown" Grid.Column="1" BorderBrush="{Binding BorderBrush,ElementName=bd}" Style="{StaticResource BtnDropDownStyle}"/>
+							
+							<Button x:Name="BtnRegular" Grid.Column="2" BorderBrush="{Binding BorderBrush,ElementName=bd}" Style="{StaticResource BtnRegularStyle}"/>
+
+							<Popup Grid.Column="0" Grid.ColumnSpan="3" IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" Focusable="False" AllowsTransparency="True" PopupAnimation="Slide" HorizontalOffset="-1" VerticalOffset="1">
+								<Grid MaxHeight="{Binding MaxDropDownHeight,RelativeSource={RelativeSource TemplatedParent}}" MinWidth="{Binding ActualWidth,ElementName=bd,Converter={StaticResource DropShdwWidthCvt}}" SnapsToDevicePixels="True">
+									<Border x:Name="Shadow" Margin="0,0,5,8" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" SnapsToDevicePixels="True">
+										<Border.Effect>
+											<DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.45"/>
+										</Border.Effect>
+									</Border>
+
+									<Border Margin="{Binding Margin,ElementName=Shadow}" BorderThickness="1" BorderBrush="{StaticResource NormalBorderBrush}" SnapsToDevicePixels="True">
+										<Grid x:Name="gd">
+											<ScrollViewer x:Name="sv" VerticalScrollBarVisibility="Auto">
+												<ItemsPresenter/>
+											</ScrollViewer>
+
+											<TextBlock x:Name="tb" Foreground="DimGray" HorizontalAlignment="Center" VerticalAlignment="Center"
+											           Text="{Binding NoItemsHint,RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed"/>
+										</Grid>
+									</Border>
+								</Grid>
+							</Popup>
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="UIElement.IsMouseOver" Value="True">
+							<Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource MouseOverBorderBrush}"/>
+						</Trigger>
+						<Trigger Property="UIElement.IsKeyboardFocusWithin" Value="True">
+							<Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource FocusedBorderBrush}"/>
+						</Trigger>
+						<Trigger Property="ItemsControl.HasItems" Value="False">
+							<Setter TargetName="gd" Property="Height" Value="75"/>
+							<Setter TargetName="gd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+							<Setter TargetName="sv" Property="Visibility" Value="Collapsed"/>
+							<Setter TargetName="tb" Property="Visibility" Value="Visible"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

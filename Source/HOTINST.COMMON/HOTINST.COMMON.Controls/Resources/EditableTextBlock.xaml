@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:editors="clr-namespace:HOTINST.COMMON.Controls.Controls.Editors">
+	<ControlTemplate x:Key="DisplayModeTemplate" TargetType="editors:EditableTextBlock">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock x:Name="PART_TbDisplayText" Text="{Binding FormattedText,RelativeSource={RelativeSource TemplatedParent}}" Margin="1,2"/>
+            <TextBlock Grid.Column="1" Margin="1,2"
+			           Text="{Binding TextEx,RelativeSource={RelativeSource TemplatedParent}}"
+                       Foreground="{Binding TextExBrush,RelativeSource={RelativeSource TemplatedParent}}"/>
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="EditModeTemplate" TargetType="editors:EditableTextBlock">
+		<TextBox x:Name="PART_TbEditText" Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Padding="1"/>
+	</ControlTemplate>
+
+	<Style TargetType="{x:Type editors:EditableTextBlock}">
+		<Setter Property="Focusable" Value="False"/>
+		<Setter Property="IsInEditMode" Value="False"/>
+		<Setter Property="Template" Value="{StaticResource DisplayModeTemplate}"/>
+		<Style.Triggers>
+			<Trigger Property="IsInEditMode" Value="True">
+				<Setter Property="Template" Value="{StaticResource EditModeTemplate}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+</ResourceDictionary>

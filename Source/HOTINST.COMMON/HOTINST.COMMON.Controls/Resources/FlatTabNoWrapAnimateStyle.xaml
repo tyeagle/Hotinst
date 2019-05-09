@@ -1,0 +1,449 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:HOTINST.COMMON.Controls.Converters">
+	<converters:GetTranslucentBrushConverter x:Key="TranslucentBrushCvt" Opacity="0.8"/>
+
+	<ScaleTransform x:Key="HorStf" ScaleX="0" ScaleY="1"/>
+	<ScaleTransform x:Key="VerStf" ScaleX="1" ScaleY="0"/>
+
+	<Storyboard x:Key="HorSbEnter" TargetName="Indicator" TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+		<DoubleAnimation To="1" Duration="0:0:0.15"/>
+	</Storyboard>
+	<Storyboard x:Key="HorSbExit" TargetName="Indicator" TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)">
+		<DoubleAnimation To="0" Duration="0:0:0.15"/>
+	</Storyboard>
+
+	<Storyboard x:Key="VerSbEnter" TargetName="Indicator" TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+		<DoubleAnimation To="1" Duration="0:0:0.15"/>
+	</Storyboard>
+	<Storyboard x:Key="VerSbExit" TargetName="Indicator" TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)">
+		<DoubleAnimation To="0" Duration="0:0:0.15"/>
+	</Storyboard>
+
+	<Style x:Key="FlatTabItemStyle" TargetType="TabItem">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Margin" Value="0" />
+		<Setter Property="Padding" Value="10 4" />
+		<Setter Property="BorderThickness" Value="1 0" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="VerticalContentAlignment" Value="Stretch" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="TabItem">
+					<Grid SnapsToDevicePixels="true" ClipToBounds="True">
+						<Grid.RowDefinitions>
+							<RowDefinition x:Name="Rd1" Height="2"/>
+							<RowDefinition x:Name="Rd2" Height="*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition x:Name="Cd1" Width="2"/>
+							<ColumnDefinition x:Name="Cd2" Width="*"/>
+						</Grid.ColumnDefinitions>
+
+						<Rectangle x:Name="Indicator" Grid.ColumnSpan="2" RenderTransform="{StaticResource HorStf}" Fill="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type TabControl}},Converter={StaticResource TranslucentBrushCvt}}" RenderTransformOrigin="0.5,0.5"/>
+
+						<Border x:Name="Bd" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" SnapsToDevicePixels="True" UseLayoutRounding="True" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+							<ContentPresenter x:Name="Content"
+							                  ContentSource="Header" Focusable="False" RecognizesAccessKey="True"
+							                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="true">
+							<Setter Property="Panel.ZIndex" Value="1" />
+							<Setter Property="Background" Value="{Binding Background,RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+							<Setter Property="BorderBrush" Value="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+							<Setter TargetName="Indicator" Property="RenderTransform">
+								<Setter.Value>
+									<TransformGroup/>
+								</Setter.Value>
+							</Setter>
+							<Setter TargetName="Indicator" Property="Fill" Value="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}"/>
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Top" />
+								<Condition Property="IsMouseOver" Value="true" />
+							</MultiTrigger.Conditions>
+							<MultiTrigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource HorSbEnter}"/>
+							</MultiTrigger.EnterActions>
+							<MultiTrigger.ExitActions>
+								<BeginStoryboard Storyboard="{StaticResource HorSbExit}"/>
+							</MultiTrigger.ExitActions>
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Left" />
+								<Condition Property="IsMouseOver" Value="true" />
+							</MultiTrigger.Conditions>
+							<MultiTrigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource VerSbEnter}"/>
+							</MultiTrigger.EnterActions>
+							<MultiTrigger.ExitActions>
+								<BeginStoryboard Storyboard="{StaticResource VerSbExit}"/>
+							</MultiTrigger.ExitActions>
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Bottom" />
+								<Condition Property="IsMouseOver" Value="true" />
+							</MultiTrigger.Conditions>
+							<MultiTrigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource HorSbEnter}"/>
+							</MultiTrigger.EnterActions>
+							<MultiTrigger.ExitActions>
+								<BeginStoryboard Storyboard="{StaticResource HorSbExit}"/>
+							</MultiTrigger.ExitActions>
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Right" />
+								<Condition Property="IsMouseOver" Value="true" />
+							</MultiTrigger.Conditions>
+							<MultiTrigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource VerSbEnter}"/>
+							</MultiTrigger.EnterActions>
+							<MultiTrigger.ExitActions>
+								<BeginStoryboard Storyboard="{StaticResource VerSbExit}"/>
+							</MultiTrigger.ExitActions>
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Bottom"/>
+								<Condition Property="IsSelected" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="Indicator" Property="RenderTransform" Value="{StaticResource HorStf}"/>
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Left"/>
+								<Condition Property="IsSelected" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="Indicator" Property="RenderTransform" Value="{StaticResource VerStf}"/>
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="TabStripPlacement" Value="Right"/>
+								<Condition Property="IsSelected" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="Indicator" Property="RenderTransform" Value="{StaticResource VerStf}"/>
+						</MultiTrigger>
+						<Trigger Property="TabStripPlacement" Value="Bottom">
+							<Setter Property="BorderThickness" Value="1 0" />
+
+							<Setter TargetName="Rd1" Property="Height" Value="*"/>
+							<Setter TargetName="Rd2" Property="Height" Value="2"/>
+							<Setter TargetName="Indicator" Property="Grid.Row" Value="1"/>
+							<Setter TargetName="Indicator" Property="Grid.Column" Value="0"/>
+							<Setter TargetName="Indicator" Property="Grid.RowSpan" Value="1"/>
+							<Setter TargetName="Indicator" Property="Grid.ColumnSpan" Value="2"/>
+							<Setter TargetName="Bd" Property="Grid.Row" Value="0"/>
+							<Setter TargetName="Bd" Property="Grid.Column" Value="0"/>
+							<Setter TargetName="Bd" Property="Grid.RowSpan" Value="1"/>
+							<Setter TargetName="Bd" Property="Grid.ColumnSpan" Value="2"/>
+						</Trigger>
+						<Trigger Property="TabStripPlacement" Value="Left">
+							<Setter Property="BorderThickness" Value="0 1" />
+
+							<Setter TargetName="Cd1" Property="Width" Value="2"/>
+							<Setter TargetName="Cd2" Property="Width" Value="*"/>
+							<Setter TargetName="Indicator" Property="Grid.Row" Value="0"/>
+							<Setter TargetName="Indicator" Property="Grid.Column" Value="0"/>
+							<Setter TargetName="Indicator" Property="Grid.RowSpan" Value="2"/>
+							<Setter TargetName="Indicator" Property="Grid.ColumnSpan" Value="1"/>
+							<Setter TargetName="Bd" Property="Grid.Row" Value="0"/>
+							<Setter TargetName="Bd" Property="Grid.Column" Value="1"/>
+							<Setter TargetName="Bd" Property="Grid.RowSpan" Value="2"/>
+							<Setter TargetName="Bd" Property="Grid.ColumnSpan" Value="1"/>
+						</Trigger>
+						<Trigger Property="TabStripPlacement" Value="Right">
+							<Setter Property="BorderThickness" Value="0 1" />
+
+							<Setter TargetName="Cd1" Property="Width" Value="*"/>
+							<Setter TargetName="Cd2" Property="Width" Value="2"/>
+							<Setter TargetName="Indicator" Property="Grid.Row" Value="0"/>
+							<Setter TargetName="Indicator" Property="Grid.Column" Value="1"/>
+							<Setter TargetName="Indicator" Property="Grid.RowSpan" Value="2"/>
+							<Setter TargetName="Indicator" Property="Grid.ColumnSpan" Value="1"/>
+							<Setter TargetName="Bd" Property="Grid.Row" Value="0"/>
+							<Setter TargetName="Bd" Property="Grid.Column" Value="0"/>
+							<Setter TargetName="Bd" Property="Grid.RowSpan" Value="2"/>
+							<Setter TargetName="Bd" Property="Grid.ColumnSpan" Value="1"/>
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="true" />
+								<Condition Property="TabStripPlacement" Value="Top" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Margin" Value="0 0 0 -1" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="true" />
+								<Condition Property="TabStripPlacement" Value="Bottom" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Margin" Value="0 -1 0 0" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="true" />
+								<Condition Property="TabStripPlacement" Value="Left" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Margin" Value="0 0 -1 0" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="true" />
+								<Condition Property="TabStripPlacement" Value="Right" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Margin" Value="-1 0 0 0" />
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Foreground" Value="#999999" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="RBtnStyle" TargetType="{x:Type RepeatButton}" BasedOn="{x:Null}">
+		<Setter Property="Focusable" Value="False"/>
+		<Setter Property="ClickMode" Value="Press"/>
+		<Setter Property="MinWidth" Value="0"/>
+		<Setter Property="MinHeight" Value="0"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RepeatButton}">
+					<Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource FindAncestor,AncestorType=TabControl}}" Background="Transparent" SnapsToDevicePixels="true">
+						<ContentPresenter x:Name="ContentContainer" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="ButtonBase.IsMouseOver" Value="true">
+							<Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+						</Trigger>
+						<Trigger Property="ButtonBase.IsPressed" Value="true">
+							<Setter TargetName="Bd" Property="Background" Value="#CDCDCD"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<MenuScrollingVisibilityConverter x:Key="ĕ"/>
+
+	<Style x:Key="HorTabScrolViewer" TargetType="{x:Type ScrollViewer}">
+		<Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+		<Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ScrollViewer}">
+					<Grid SnapsToDevicePixels="true">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<ScrollContentPresenter Grid.Column="1" Panel.ZIndex="1"
+						                        Margin="{TemplateBinding Control.Padding}"
+						                        CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"/>
+
+						<RepeatButton Grid.Column="0" Padding="6,0"
+						              BorderThickness="{TemplateBinding BorderThickness}"
+						              Style="{StaticResource RBtnStyle}"
+						              Command="{x:Static ScrollBar.LineLeftCommand}"
+						              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<UIElement.Visibility>
+								<MultiBinding FallbackValue="Visibility.Collapsed" Converter="{StaticResource ĕ}" ConverterParameter="0">
+									<Binding Path="ComputedHorizontalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="HorizontalOffset" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ExtentWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ViewportWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+								</MultiBinding>
+							</UIElement.Visibility>
+							<Path Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Data="M5,0L5,9 4,9 4,8 3,8 3,7 2,7 2,6 1,6 1,5 0,5 0,4 1,4 1,3 2,3 2,2 3,2 3,1 4,1 4,0z"/>
+						</RepeatButton>
+						<RepeatButton Grid.Column="2" Padding="6,0"
+						              BorderThickness="{TemplateBinding BorderThickness}"
+						              Style="{StaticResource RBtnStyle}"
+						              Command="{x:Static ScrollBar.LineRightCommand}"
+						              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<UIElement.Visibility>
+								<MultiBinding FallbackValue="Visibility.Collapsed" Converter="{StaticResource ĕ}" ConverterParameter="100">
+									<Binding Path="ComputedHorizontalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="HorizontalOffset" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ExtentWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ViewportWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+								</MultiBinding>
+							</UIElement.Visibility>
+							<Path Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Data="M0,0L0,9 1,9 1,8 2,8 2,7 3,7 3,6 4,6 4,5 5,5 5,4 4,4 4,3 3,3 3,2 2,2 2,1 1,1 1,0z"/>
+						</RepeatButton>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="VerTabScrolViewer" TargetType="{x:Type ScrollViewer}">
+		<Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+		<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ScrollViewer}">
+					<Grid SnapsToDevicePixels="true">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+
+						<ScrollContentPresenter Grid.Row="1" Panel.ZIndex="1"
+						                        Margin="{TemplateBinding Control.Padding}"
+						                        CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"/>
+
+						<RepeatButton Grid.Row="0" Padding="0,6"
+						              BorderThickness="{TemplateBinding BorderThickness}"
+						              Style="{StaticResource RBtnStyle}"
+						              Command="{x:Static ScrollBar.LineUpCommand}" Focusable="false"
+						              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<UIElement.Visibility>
+								<MultiBinding FallbackValue="Visibility.Collapsed" Converter="{StaticResource ĕ}" ConverterParameter="0">
+									<Binding Path="ComputedVerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="VerticalOffset" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ExtentHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+								</MultiBinding>
+							</UIElement.Visibility>
+							<Path Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Data="M 0,4 L 3.5,0 L 7,4 Z"/>
+						</RepeatButton>
+						<RepeatButton Grid.Row="2" Padding="0,6"
+						              BorderThickness="{TemplateBinding BorderThickness}"
+						              Style="{StaticResource RBtnStyle}"
+						              Command="{x:Static ScrollBar.LineDownCommand}" Focusable="false"
+						              CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<UIElement.Visibility>
+								<MultiBinding FallbackValue="Visibility.Collapsed" Converter="{StaticResource ĕ}" ConverterParameter="100">
+									<Binding Path="ComputedVerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="VerticalOffset" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ExtentHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+									<Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}"/>
+								</MultiBinding>
+							</UIElement.Visibility>
+							<Path Fill="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Data="M 0,0 L 3.5,4 L 7,0 Z"/>
+						</RepeatButton>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="TabControl">
+		<Setter Property="UseLayoutRounding" Value="True"/>
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="ItemContainerStyle" Value="{StaticResource FlatTabItemStyle}" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Top" />
+		<Setter Property="BorderBrush" Value="RoyalBlue"/>
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="TabControl">
+					<Grid ClipToBounds="False"
+					      KeyboardNavigation.TabNavigation="Local"
+					      SnapsToDevicePixels="true">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition x:Name="ColumnDefinition0" />
+							<ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition x:Name="RowDefinition0" Height="Auto" />
+							<RowDefinition x:Name="RowDefinition1" Height="*" />
+						</Grid.RowDefinitions>
+
+						<!--<TabPanel x:Name="HeaderPanel"
+									  Margin="{TemplateBinding Padding}"
+							          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							          IsItemsHost="true"
+							          Panel.ZIndex="1"
+							          KeyboardNavigation.TabIndex="1"/>-->
+
+						<ScrollViewer x:Name="HeaderPanel" Panel.ZIndex="1"
+						              Style="{StaticResource HorTabScrolViewer}"
+						              BorderThickness="1,1,1,0"
+						              Padding="0,0,0,-1"
+						              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+						              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      SnapsToDevicePixels="True"
+						              KeyboardNavigation.TabIndex="1">
+							<TabPanel IsItemsHost="true" KeyboardNavigation.TabIndex="2" SnapsToDevicePixels="True"/>
+						</ScrollViewer>
+
+						<Border x:Name="ContentPanel"
+						        Grid.Row="1"
+						        Grid.Column="0"
+						        Background="White"
+						        BorderBrush="{TemplateBinding BorderBrush}"
+						        BorderThickness="{TemplateBinding BorderThickness}"
+						        Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="True"
+						        KeyboardNavigation.DirectionalNavigation="Contained"
+						        KeyboardNavigation.TabIndex="3"
+						        KeyboardNavigation.TabNavigation="Local">
+							<ContentPresenter x:Name="PART_SelectedContentHost"
+							                  ContentSource="SelectedContent"
+							                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="TabStripPlacement" Value="Bottom">
+							<Setter TargetName="HeaderPanel" Property="BorderThickness" Value="1,0,1,1"/>
+							<Setter TargetName="HeaderPanel" Property="Padding" Value="0,-1,0,0"/>
+							<Setter TargetName="HeaderPanel" Property="Grid.Row" Value="1" />
+							<Setter TargetName="ContentPanel" Property="Grid.Row" Value="0" />
+							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
+							<Setter TargetName="RowDefinition1" Property="Height" Value="Auto" />
+						</Trigger>
+						<Trigger Property="TabStripPlacement" Value="Left">
+							<Setter TargetName="HeaderPanel" Property="Style" Value="{StaticResource VerTabScrolViewer}"/>
+							<Setter TargetName="HeaderPanel" Property="BorderThickness" Value="1,1,0,1"/>
+							<Setter TargetName="HeaderPanel" Property="Padding" Value="0,0,-1,0"/>
+							<Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0" />
+							<Setter TargetName="ContentPanel" Property="Grid.Row" Value="0" />
+							<Setter TargetName="HeaderPanel" Property="Grid.Column" Value="0" />
+							<Setter TargetName="ContentPanel" Property="Grid.Column" Value="1" />
+							<Setter TargetName="ColumnDefinition0" Property="Width" Value="Auto" />
+							<Setter TargetName="ColumnDefinition1" Property="Width" Value="*" />
+							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
+							<Setter TargetName="RowDefinition1" Property="Height" Value="0" />
+						</Trigger>
+						<Trigger Property="TabStripPlacement" Value="Right">
+							<Setter TargetName="HeaderPanel" Property="Style" Value="{StaticResource VerTabScrolViewer}"/>
+							<Setter TargetName="HeaderPanel" Property="BorderThickness" Value="0,1,1,1"/>
+							<Setter TargetName="HeaderPanel" Property="Padding" Value="-1,0,0,0"/>
+							<Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0" />
+							<Setter TargetName="ContentPanel" Property="Grid.Row" Value="0" />
+							<Setter TargetName="HeaderPanel" Property="Grid.Column" Value="1" />
+							<Setter TargetName="ContentPanel" Property="Grid.Column" Value="0" />
+							<Setter TargetName="ColumnDefinition0" Property="Width" Value="*" />
+							<Setter TargetName="ColumnDefinition1" Property="Width" Value="Auto" />
+							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
+							<Setter TargetName="RowDefinition1" Property="Height" Value="0" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Foreground" Value="#999999" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

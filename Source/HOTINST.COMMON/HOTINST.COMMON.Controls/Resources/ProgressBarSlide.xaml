@@ -1,0 +1,96 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:HOTINST.COMMON.Controls.Converters"
+                    xmlns:controls="clr-namespace:HOTINST.COMMON.Controls.Controls">
+	<BooleanToVisibilityConverter x:Key="BoolToVisibleCvt"/>
+	<converters:GetTranslucentBrushConverter x:Key="TranslucentBrushCvt"/>
+	<controls:HeightConverter x:Key="HeightCvt"/>
+	
+	<Style TargetType="controls:ProgressBarSlide">
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Height" Value="20"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="#A2A2A2"/>
+		<Setter Property="UnTreatedColor" Value="#E8E8E8"/>
+		<Setter Property="ValueForeground" Value="Black"/>
+		<Setter Property="ValueAlignment" Value="Center"/>
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="UseLayoutRounding" Value="True"/>
+		<Setter Property="BrushNormal" Value="#56DF5E"/>
+		<Setter Property="BrushPause" Value="#FFE21B"/>
+		<Setter Property="BrushError" Value="#FF4B4B"/>
+		<Setter Property="State" Value="Normal"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border Height="{TemplateBinding Height}" ClipToBounds="True" SnapsToDevicePixels="True" UseLayoutRounding="True"
+					        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Border Height="{TemplateBinding Height,Converter={StaticResource HeightCvt}}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+							<Grid>
+								<Grid x:Name="Part_GridRoot" ClipToBounds="True" RenderTransformOrigin="0.5,0.5">
+									<Grid.RenderTransform>
+										<RotateTransform Angle="180"/>
+									</Grid.RenderTransform>
+
+									<Border x:Name="Border_Progress" Margin="-10,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="True">
+										<Border.RenderTransform>
+											<SkewTransform AngleX="30"/>
+										</Border.RenderTransform>
+										<Border.Background>
+											<DrawingBrush ViewportUnits="Absolute" Viewport="0,0,20,16" TileMode="Tile">
+												<DrawingBrush.Drawing>
+													<DrawingGroup>
+														<DrawingGroup.Children>
+															<GeometryDrawing Brush="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ProgressBrush}">
+																<GeometryDrawing.Geometry>
+																	<RectangleGeometry Rect="0,0,20,16"/>
+																</GeometryDrawing.Geometry>
+															</GeometryDrawing>
+															<GeometryDrawing Brush="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ProgressBrush,Converter={StaticResource TranslucentBrushCvt}}">
+																<GeometryDrawing.Geometry>
+																	<RectangleGeometry Rect="20,0,20,16"/>
+																</GeometryDrawing.Geometry>
+															</GeometryDrawing>
+														</DrawingGroup.Children>
+													</DrawingGroup>
+												</DrawingBrush.Drawing>
+											</DrawingBrush>
+										</Border.Background>
+										<Border.Triggers>
+											<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+												<BeginStoryboard>
+													<Storyboard RepeatBehavior="Forever" TargetName="Border_Progress" TargetProperty="Margin">
+														<ThicknessAnimation From="-30,0,0,0" To="-10,0,0,0"/>
+													</Storyboard>
+												</BeginStoryboard>
+											</EventTrigger>
+										</Border.Triggers>
+									</Border>
+
+									<Border x:Name="Part_Indicator" Width="{Binding ActualWidth,ElementName=Part_GridRoot,Mode=OneTime}" HorizontalAlignment="Left"
+											Background="{TemplateBinding controls:ProgressBarSlide.UnTreatedColor}" UseLayoutRounding="True">
+										<Border.Resources>
+											<Storyboard x:Key="sbProgress">
+												<DoubleAnimation Storyboard.TargetName="Part_Indicator" Storyboard.TargetProperty="Width"
+																 From="{Binding ActualWidth,ElementName=Part_Indicator}"/>
+											</Storyboard>
+										</Border.Resources>
+									</Border>
+								</Grid>
+
+								<Viewbox Focusable="False" UseLayoutRounding="True"
+										 HorizontalAlignment="{TemplateBinding controls:ProgressBarSlide.ValueAlignment}"
+										 Visibility="{TemplateBinding controls:ProgressBarSlide.ShowValue,Converter={StaticResource BoolToVisibleCvt}}">
+									<ContentControl Content="{Binding Value,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type controls:ProgressBarSlide}}}"
+													ContentStringFormat="{TemplateBinding controls:ProgressBarSlide.ValueDisplayFormat}"
+													Foreground="{TemplateBinding controls:ProgressBarSlide.ValueForeground}"
+													Focusable="False" UseLayoutRounding="True" SnapsToDevicePixels="True"/>
+								</Viewbox>
+							</Grid>
+						</Border>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
