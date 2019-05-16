@@ -19,3 +19,10 @@
 *.exe
 *.out
 *.app
+/Source/HOTINST.COMMON/UnitTestProject/obj/Debug
+/Source/HOTINST.COMMON/HOTINST.ICD/obj/Debug
+/Source/HOTINST.COMMON/HOTINST.COMMON.DB/obj/Debug
+/Source/HOTINST.COMMON/HOTINST.COMMON.Controls/obj/Debug
+/Source/HOTINST.COMMON/HOTINST.COMMON.Access/obj/Debug
+/Source/HOTINST.COMMON/HOTINST.COMMON/obj/Debug
+/Source/HOTINST.COMMON/.vs/HOTINST.COMMON/v15/Server/sqlite3
