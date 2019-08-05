@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using HOTINST.COMMON;
+using System.ComponentModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HOTINST.COMMON.Collection;
+using HOTINST.COMMON.Data;
 
 namespace UnitTestProject
 {
@@ -131,6 +133,32 @@ namespace UnitTestProject
             Debug.Assert(buffer.Count() == 22 );
 
             //buffer.Write(data, 0, data.Length);
+        }
+
+        public enum SenceType
+        {
+            /// <summary>
+            /// 热电偶
+            /// </summary>
+            [System.ComponentModel.Description("热电偶")]
+            Thermocouple,
+            /// <summary>
+            /// 热电阻
+            /// </summary>
+            [System.ComponentModel.Description("热电阻")]
+            ResistanceTemperatureDetector,
+        }
+
+        [TestMethod]
+        public void TestEnumHelper()
+        {
+            SenceType st = SenceType.Thermocouple;
+
+            var listName = EnumHelper.GetEnumStringFromEnumValue(st.GetType());
+            var value0 = listName.GetValues(0);
+
+            int i = (int) st;
+            var desc = i.ToEnumDescriptionString(typeof(SenceType));
         }
     }
 }
