@@ -116,7 +116,12 @@ namespace HOTINST.COMMON.Bitwise
 
             return value;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="mask"></param>
+        /// <returns></returns>
         public static UInt32 ReverseBit(UInt32 value, UInt32 mask)
         {
             //保存除取反位之外的其余位
