@@ -38,7 +38,7 @@ namespace HOTINST.COMMON.Serialization
             {
                 if (!string.IsNullOrWhiteSpace(filePath) && sourceObj != null)
                 {
-                    using (StreamWriter writer = new StreamWriter(filePath))
+                    using (StreamWriter writer = new StreamWriter(filePath, false))
                     {
                         XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootName));
 

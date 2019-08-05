@@ -33,7 +33,7 @@ namespace HOTINST.COMMON.Serialization
             {
                 if (!string.IsNullOrWhiteSpace(filePath) && sourceObj != null)
                 {
-                    using (Stream stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+                    using (Stream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
                         DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(T));
                         jsonSerializer.WriteObject(stream, sourceObj);

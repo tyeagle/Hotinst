@@ -129,6 +129,7 @@
     <Compile Include="Condition\ValidatorExtensions.Type.cs" />
     <Compile Include="Const\RegexRule.cs" />
     <Compile Include="Data\Converter.cs" />
+    <Compile Include="Data\EnumHelper.cs" />
     <Compile Include="Data\StringFormat.cs" />
     <Compile Include="Data\TypeName.cs" />
     <Compile Include="DynamicExpresso\AssignmentOperators.cs" />
