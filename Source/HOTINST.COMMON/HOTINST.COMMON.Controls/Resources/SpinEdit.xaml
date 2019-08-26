@@ -1,0 +1,231 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:HOTINST.COMMON.Controls.Converters"
+                    xmlns:shared="clr-namespace:HOTINST.COMMON.Controls.Controls.Editors">
+	<LinearGradientBrush x:Key="BackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+		<GradientStop Color="#FFEEEEF2" Offset="0" />
+		<GradientStop Color="#FFEEEEF2" Offset="1" />
+	</LinearGradientBrush>
+	<SolidColorBrush x:Key="BorderBrush" Color="#FFCCCEDB" />
+	<SolidColorBrush x:Key="ForegroundBrush" Color="#FF404040" />
+	<SolidColorBrush x:Key="GlyphBrush" Color="#FF404040" />
+	<LinearGradientBrush x:Key="HeaderBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+		<GradientStop Color="#FFEEEEF2" Offset="0" />
+		<GradientStop Color="#FFEEEEF2" Offset="1" />
+	</LinearGradientBrush>
+	<SolidColorBrush x:Key="HeaderBorderBrush" Color="#FFCCCEDB" />
+	<SolidColorBrush x:Key="HeaderForegroundBrush" Color="#FF404040" />
+	<SolidColorBrush x:Key="HeaderGlyphBrush" Color="#FF404040" />
+	<LinearGradientBrush x:Key="HoverBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+		<GradientStop Color="#FFC9DEF5" Offset="0" />
+		<GradientStop Color="#FFC9DEF5" Offset="1" />
+	</LinearGradientBrush>
+	<SolidColorBrush x:Key="HoverBorderBrush" Color="#FF3399FF" />
+	<SolidColorBrush x:Key="HoverForegroundBrush" Color="#FF404040" />
+	<SolidColorBrush x:Key="HoverGlyphBrush" Color="#FF404040" />
+	<LinearGradientBrush x:Key="ActiveBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+		<GradientStop Color="#FF3399FF" Offset="0" />
+		<GradientStop Color="#FF3399FF" Offset="1" />
+	</LinearGradientBrush>
+	<SolidColorBrush x:Key="ActiveBorderBrush" Color="#FF2380CC" />
+	<SolidColorBrush x:Key="ActiveForegroundBrush" Color="#FFFFFFFF" />
+	<SolidColorBrush x:Key="ActiveGlyphBrush" Color="#FFFFFFFF" />
+	<SolidColorBrush x:Key="ContentBackgroundBrush" Color="#FFFFFFFF" />
+	<SolidColorBrush x:Key="ContentBorderBrush" Color="#FFCCCEDB" />
+	<SolidColorBrush x:Key="ContentForegroundBrush" Color="#FF404040" />
+	<SolidColorBrush x:Key="ContentSelectionBrush" Color="#FFCECECE" />
+	<SolidColorBrush x:Key="SelectionInActiveBrush" Color="#FFB95BFF" />
+	<SolidColorBrush x:Key="ErrorBrush" Color="#FFFF0000" />
+	<SolidColorBrush x:Key="ActiveLightBackground" Color="#FFB95BFF" />
+	<SolidColorBrush x:Key="ActiveDarkBackground" Color="#FF1A4C80" />
+	<SolidColorBrush x:Key="ContentAlternativeBackground" Color="#FFD8D8D8" />
+	<SolidColorBrush x:Key="TickColor" Color="#FF333333" />
+	<SolidColorBrush x:Key="RangeColor1" Color="#FF61A301" />
+	<SolidColorBrush x:Key="RangeColor2" Color="#FFF2E606" />
+	<SolidColorBrush x:Key="RangeColor3" Color="#FFFF0000" />
+	<SolidColorBrush x:Key="LightBackgroundBrush" Color="#FFDDDDE5" />
+
+	<converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+	<converters:RadiusConverter x:Key="radiusConverter"/>
+	<converters:ClipConverter x:Key="clipConverter"/>
+
+	<Style x:Key="NumericUpDownDoubleTextBoxStyle" TargetType="{x:Type shared:DoubleTextBox}">
+		<Setter Property="FocusedBorderBrush" Value="{StaticResource ActiveBorderBrush}" />
+		<Setter Property="BorderBrush" Value="{StaticResource ContentBorderBrush}" />
+		<Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}" />
+		<Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}" />
+		<Setter Property="WatermarkTextForeground" Value="{StaticResource ContentSelectionBrush}" />
+		<Setter Property="PositiveForeground" Value="{StaticResource ContentForegroundBrush}" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="AllowDrop" Value="True" />
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type shared:DoubleTextBox}">
+					<Grid>
+						<Border Name="Border" Opacity="1" Background="{TemplateBinding Control.Background}" BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="{TemplateBinding Control.BorderThickness}" CornerRadius="{TemplateBinding shared:EditorBase.CornerRadius}" SnapsToDevicePixels="True">
+							<Grid>
+								<ScrollViewer Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" Visibility="{TemplateBinding shared:EditorBase.ContentElementVisibility}" />
+								<ContentControl Name="PART_Watermark" Foreground="{TemplateBinding shared:EditorBase.WatermarkTextForeground}" IsTabStop="False" IsHitTestVisible="False" Background="{TemplateBinding shared:EditorBase.WatermarkBackground}" FontFamily="{TemplateBinding Control.FontFamily}" FontSize="{TemplateBinding Control.FontSize}" FontStretch="{TemplateBinding Control.FontStretch}" FontStyle="{TemplateBinding Control.FontStyle}" FontWeight="{TemplateBinding Control.FontWeight}" Padding="{TemplateBinding Control.Padding}" Visibility="{TemplateBinding shared:EditorBase.WatermarkVisibility}" Content="{TemplateBinding shared:EditorBase.WatermarkText}" Opacity="{TemplateBinding shared:EditorBase.WatermarkOpacity}" ContentTemplate="{TemplateBinding shared:EditorBase.WatermarkTemplate}" Grid.Row="0" />
+							</Grid>
+						</Border>
+						<Border Name="MouseOver_Border" BorderBrush="{StaticResource HoverBorderBrush}" CornerRadius="{TemplateBinding shared:EditorBase.CornerRadius}" BorderThickness="{TemplateBinding Control.BorderThickness}" SnapsToDevicePixels="True" Visibility="Collapsed" />
+						<Border Name="Focused_Border" BorderBrush="{TemplateBinding shared:EditorBase.FocusedBorderBrush}" CornerRadius="{TemplateBinding shared:EditorBase.CornerRadius}" BorderThickness="{TemplateBinding Control.BorderThickness}" SnapsToDevicePixels="True" Visibility="Collapsed" />
+						<Border />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Property="Background" />
+							<Setter Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Property="Foreground" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="RepeatButtonTemplate" TargetType="{x:Type RepeatButton}">
+		<Border Name="Chrome" Background="{TemplateBinding Control.Background}" BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="{TemplateBinding Control.BorderThickness}" CornerRadius="0" SnapsToDevicePixels="True">
+			<ContentPresenter Margin="{TemplateBinding Control.Padding}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+		</Border>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter TargetName="Chrome" Value="{StaticResource HoverBackgroundBrush}" Property="Background" />
+				<Setter TargetName="Chrome" Value="{StaticResource HoverBorderBrush}" Property="BorderBrush" />
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter TargetName="Chrome" Value="{StaticResource ActiveBackgroundBrush}" Property="Background" />
+				<Setter TargetName="Chrome" Value="{StaticResource ActiveBorderBrush}" Property="BorderBrush" />
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter TargetName="Chrome" Property="Opacity" Value="0.5" />
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Style x:Key="RepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+		<Setter Property="OverridesDefaultStyle" Value="True" />
+		<Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+		<Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+		<Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="1" />
+		<Setter Property="Template" Value="{StaticResource RepeatButtonTemplate}" />
+	</Style>
+	<Style x:Key="MetroUpDownStyle" TargetType="{x:Type shared:SpinEdit}">
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}" />
+		<Setter Property="NegativeBackground" Value="{StaticResource ContentBackgroundBrush}" />
+		<Setter Property="NegativeBorderBrush" Value="{StaticResource ContentBorderBrush}" />
+		<Setter Property="BorderBrush" Value="{StaticResource ContentBorderBrush}" />
+		<Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}" />
+		<Setter Property="FocusedBackground" Value="{StaticResource ContentBackgroundBrush}" />
+		<Setter Property="FocusedBorderBrush" Value="{StaticResource ActiveBorderBrush}" />
+		<Setter Property="FocusedForeground" Value="{StaticResource ActiveForegroundBrush}" />
+		<Setter Property="ZeroColor" Value="{StaticResource ContentForegroundBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type shared:SpinEdit}">
+					<Grid>
+						<Border Name="Border" CornerRadius="{TemplateBinding shared:SpinEdit.CornerRadius}" Width="{TemplateBinding FrameworkElement.Width}" Height="{TemplateBinding FrameworkElement.Height}" BorderThickness="{TemplateBinding Control.BorderThickness}" BorderBrush="{TemplateBinding Control.BorderBrush}" Background="{TemplateBinding Control.Background}" SnapsToDevicePixels="True">
+							<Border.Clip>
+								<RectangleGeometry RadiusX="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}, Path=CornerRadius, Converter={StaticResource radiusConverter}}" RadiusY="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}, Path=CornerRadius, Converter={StaticResource radiusConverter}}">
+									<RectangleGeometry.Rect>
+										<MultiBinding Converter="{StaticResource clipConverter}">
+											<Binding Path="ActualWidth" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Border}}" />
+											<Binding Path="ActualHeight" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Border}}" />
+										</MultiBinding>
+									</RectangleGeometry.Rect>
+								</RectangleGeometry>
+							</Border.Clip>
+							<Grid ClipToBounds="True">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition />
+									<RowDefinition />
+								</Grid.RowDefinitions>
+								<shared:DoubleTextBox x:Name="SecondBlock" Grid.Column="0" Grid.RowSpan="2" Cursor="None" HorizontalContentAlignment="Center" BorderBrush="#00FFFFFF" VerticalContentAlignment="Center" Visibility="Collapsed" NumberFormat="{TemplateBinding shared:SpinEdit.NumberFormatInfo}" EnterToMoveNext="False" HorizontalAlignment="Stretch" Style="{StaticResource NumericUpDownDoubleTextBoxStyle}" shared:EditorBase.Culture="{TemplateBinding shared:SpinEdit.Culture}" Background="{TemplateBinding Control.Background}" PositiveForeground="{TemplateBinding Control.Foreground}" Focusable="{TemplateBinding UIElement.Focusable}" IsTabStop="{TemplateBinding Control.IsTabStop}" TextAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextAlignment, Mode=TwoWay}" ContextMenu="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ContextMenu}" ApplyZeroColor="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ApplyZeroColor, Mode=TwoWay}" ApplyNegativeForeground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EnableNegativeColors, Mode=TwoWay}" ZeroColor="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ZeroColor, Mode=TwoWay}" />
+								<shared:DoubleTextBox x:Name="textBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Collapsed" EnterToMoveNext="False" Focusable="{TemplateBinding UIElement.Focusable}" BorderBrush="#00FFFFFF" NumberFormat="{TemplateBinding shared:SpinEdit.NumberFormatInfo}" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource NumericUpDownDoubleTextBoxStyle}" shared:EditorBase.Culture="{TemplateBinding shared:SpinEdit.Culture}" Background="{TemplateBinding Control.Background}" PositiveForeground="{TemplateBinding Control.Foreground}" IsTabStop="{TemplateBinding Control.IsTabStop}" TextAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextAlignment, Mode=TwoWay}" ContextMenu="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ContextMenu}" ApplyZeroColor="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ApplyZeroColor, Mode=TwoWay}" ApplyNegativeForeground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EnableNegativeColors, Mode=TwoWay}" ZeroColor="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ZeroColor, Mode=TwoWay}" />
+								<shared:DoubleTextBox x:Name="DoubleTextBox" Grid.Column="0" Grid.RowSpan="2" Padding="{TemplateBinding Control.Padding}" Background="{TemplateBinding Control.Background}" PositiveForeground="{TemplateBinding Control.Foreground}" EnterToMoveNext="False" Focusable="{TemplateBinding UIElement.Focusable}" CornerRadius="{TemplateBinding shared:SpinEdit.CornerRadius}" BorderBrush="#00FFFFFF" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" IsTabStop="{TemplateBinding Control.IsTabStop}" TabIndex="{TemplateBinding Control.TabIndex}" Style="{StaticResource NumericUpDownDoubleTextBoxStyle}" GroupSeperatorEnabled="{TemplateBinding shared:SpinEdit.GroupSeperatorEnabled}" TextAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextAlignment, Mode=TwoWay}" ContextMenu="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ContextMenu}" MinValue="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MinValue, Mode=TwoWay}" MaxValue="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MaxValue, Mode=TwoWay}" NumberFormat="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NumberFormatInfo, Mode=TwoWay}" UseNullOption="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=UseNullOption, Mode=TwoWay}" NullValue="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NullValue, Mode=TwoWay}" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" shared:EditorBase.Culture="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Culture, Mode=TwoWay}" Step="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Step, Mode=TwoWay}" ZeroColor="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ZeroColor, Mode=TwoWay}" MaxValidation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MaxValidation, Mode=TwoWay}" MinValidation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MinValidation, Mode=TwoWay}" IsScrollingOnCircle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsScrollingOnCircle, Mode=TwoWay}" NumberDecimalDigits="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NumberDecimalDigits, Mode=TwoWay}" IsReadOnly="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsReadOnly, Mode=TwoWay}" MaxValueOnExceedMaxDigit="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MaxValueOnExceedMaxDigit, Mode=TwoWay}" MinValueOnExceedMinDigit="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MinValueOnExceedMinDigit, Mode=TwoWay}" ApplyZeroColor="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ApplyZeroColor, Mode=TwoWay}" ApplyNegativeForeground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EnableNegativeColors, Mode=TwoWay}" />
+								<TextBox Name="text" Grid.Column="0" Grid.RowSpan="2" Width="{TemplateBinding FrameworkElement.Width}" Height="{TemplateBinding FrameworkElement.Height}" BorderThickness="0" BorderBrush="#00FFFFFF" Foreground="{TemplateBinding Control.Foreground}" Focusable="{TemplateBinding UIElement.Focusable}" Background="{TemplateBinding Control.Background}" IsTabStop="{TemplateBinding Control.IsTabStop}" Text="{TemplateBinding shared:SpinEdit.NullValueText}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ContextMenu="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ContextMenu}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value, Converter={StaticResource NullToVisibilityConverter}, Mode=TwoWay}" />
+								<RepeatButton Name="upbutton" Focusable="{TemplateBinding UIElement.Focusable}" IsTabStop="False" Command="shared:SpinEdit.m_upValue" Grid.Row="0" Grid.Column="1" SnapsToDevicePixels="True" Style="{StaticResource RepeatButtonStyle}" Width="17">
+									<Path Name="upbuttonpath" Stretch="Uniform" Height="4" Width="7" Fill="{StaticResource GlyphBrush}" Data="F1M541.537,173.589L531.107,173.589 536.322,167.49 541.537,173.589z" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+								</RepeatButton>
+								<RepeatButton Name="downbutton" Focusable="{TemplateBinding UIElement.Focusable}" IsTabStop="False" Command="shared:SpinEdit.m_downValue" Grid.Row="1" SnapsToDevicePixels="True" Grid.Column="1" Style="{StaticResource RepeatButtonStyle}" Width="17">
+									<Path Name="downbuttonpath" Stretch="Uniform" Fill="{StaticResource GlyphBrush}" Height="4" Width="7" Data="F1M531.107,321.943L541.537,321.943 536.322,328.042 531.107,321.943z" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+								</RepeatButton>
+							</Grid>
+						</Border>
+						<Border Name="MouseOver_Border" BorderBrush="{StaticResource HoverBorderBrush}" CornerRadius="{TemplateBinding shared:SpinEdit.CornerRadius}" BorderThickness="{TemplateBinding Control.BorderThickness}" Visibility="Collapsed" />
+						<Border Name="Focused_Border" BorderBrush="{TemplateBinding shared:SpinEdit.FocusedBorderBrush}" CornerRadius="{TemplateBinding shared:SpinEdit.CornerRadius}" BorderThickness="{TemplateBinding Control.BorderThickness}" Visibility="Collapsed" />
+						<Border />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="MouseOver_Border" Property="Visibility" Value="Visible" />
+							<Setter TargetName="Focused_Border" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="MouseOver_Border" Property="BorderThickness" Value="1" />
+						</Trigger>
+						<Trigger Property="IsFocused" Value="True">
+							<Setter TargetName="MouseOver_Border" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="Focused_Border" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<Trigger SourceName="Border" Property="CornerRadius" Value="0">
+							<Setter TargetName="Border" Value="{x:Null}" Property="Clip" />
+						</Trigger>
+						<Trigger SourceName="upbutton" Property="IsMouseOver" Value="True">
+							<Setter TargetName="upbutton" Value="{StaticResource HoverBackgroundBrush}" Property="Background" />
+							<Setter TargetName="upbutton" Value="{StaticResource HoverBorderBrush}" Property="BorderBrush" />
+							<Setter TargetName="upbuttonpath" Value="{StaticResource HoverGlyphBrush}" Property="Fill" />
+						</Trigger>
+						<Trigger SourceName="downbutton" Property="IsMouseOver" Value="True">
+							<Setter TargetName="downbutton" Value="{StaticResource HoverBackgroundBrush}" Property="Background" />
+							<Setter TargetName="downbutton" Value="{StaticResource HoverBorderBrush}" Property="BorderBrush" />
+							<Setter TargetName="downbuttonpath" Value="{StaticResource HoverGlyphBrush}" Property="Fill" />
+						</Trigger>
+						<Trigger SourceName="upbutton" Property="IsPressed" Value="True">
+							<Setter TargetName="upbutton" Value="{StaticResource ActiveBackgroundBrush}" Property="Background" />
+							<Setter TargetName="upbutton" Value="{StaticResource ActiveBorderBrush}" Property="BorderBrush" />
+							<Setter TargetName="upbuttonpath" Value="{StaticResource ActiveGlyphBrush}" Property="Fill" />
+						</Trigger>
+						<Trigger SourceName="downbutton" Property="IsPressed" Value="True">
+							<Setter TargetName="downbutton" Value="{StaticResource ActiveBackgroundBrush}" Property="Background" />
+							<Setter TargetName="downbutton" Value="{StaticResource ActiveBorderBrush}" Property="BorderBrush" />
+							<Setter TargetName="downbuttonpath" Value="{StaticResource ActiveGlyphBrush}" Property="Fill" />
+						</Trigger>
+						<Trigger Property="IsSpinEditFocused" Value="True">
+							<Setter Value="{Binding Path=FocusedBackground, RelativeSource={RelativeSource Self}}" Property="Background" />
+							<Setter Value="{Binding Path=FocusedBorderBrush, RelativeSource={RelativeSource Self}}" Property="BorderBrush" />
+							<Setter Value="{Binding Path=FocusedForeground, RelativeSource={RelativeSource Self}}" Property="Foreground" />
+						</Trigger>
+						<Trigger Property="IsValueNegative" Value="True">
+							<Setter Value="{Binding Path=NegativeBackground, RelativeSource={RelativeSource Self}}" Property="Background" />
+							<Setter Value="{Binding Path=NegativeBorderBrush, RelativeSource={RelativeSource Self}}" Property="BorderBrush" />
+							<Setter Value="{Binding Path=NegativeForeground, RelativeSource={RelativeSource Self}}" Property="Foreground" />
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsKeyboardFocusWithin" Value="True" />
+								<Condition Property="EnableFocusedColors" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter Value="{Binding Path=FocusedBackground, RelativeSource={RelativeSource Self}}" Property="Background" />
+							<Setter Value="{Binding Path=FocusedBorderBrush, RelativeSource={RelativeSource Self}}" Property="BorderBrush" />
+							<Setter Value="{Binding Path=FocusedForeground, RelativeSource={RelativeSource Self}}" Property="Foreground" />
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="0.5" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="True">
+							<Setter Property="Opacity" Value="1" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="{x:Type shared:SpinEdit}" BasedOn="{StaticResource MetroUpDownStyle}" TargetType="{x:Type shared:SpinEdit}" />
+</ResourceDictionary>

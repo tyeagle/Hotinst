@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconMaterial.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconMaterialLight.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconFontAwesome.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconOcticons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconModern.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconEntypo.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HOTINST.COMMON.Controls;component/Controls/PackIcon/Themes/PackIconSimpleIcons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

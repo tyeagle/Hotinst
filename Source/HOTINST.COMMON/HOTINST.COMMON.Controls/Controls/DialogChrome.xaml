@@ -1,0 +1,25 @@
+﻿<Window x:Class="HOTINST.COMMON.Controls.Controls.DialogChrome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" ShowInTaskbar="False"
+        SnapsToDevicePixels="True" UseLayoutRounding="True"
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+        Title="DialogChrome" Height="300" Width="300">
+	<DockPanel>
+		<StackPanel Name="toolbarPanel" Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="5">
+			<StackPanel.Resources>
+				<Style TargetType="Button">
+					<Setter Property="MinWidth" Value="60"/>
+					<Setter Property="Margin" Value="5"/>
+					<Setter Property="Padding" Value="5"/>
+				</Style>
+			</StackPanel.Resources>
+			<Button Name="btnYes" IsDefault="True" Click="BtnOk_Click" Content="确  定" Command="{Binding CmdOk}"/>
+			<Button Name="btnCancel" IsCancel="True" Click="BtnCancel_Click"/>
+		</StackPanel>
+		
+		<Grid Name="contentGrid" Margin="10 10 10 0"/>
+	</DockPanel>
+</Window>

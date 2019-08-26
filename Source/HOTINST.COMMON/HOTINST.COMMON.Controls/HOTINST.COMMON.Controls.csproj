@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0691DA82-3D32-4BAF-AB85-0A4118661D29}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>HOTINST.COMMON.Controls</RootNamespace>
+    <AssemblyName>HOTINST.COMMON.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\HOTINST.COMMON.Controls.xml</DocumentationFile>
+    <NoWarn>1587</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET40</DefineConstants>
+    <DocumentationFile>bin\Debug\HOTINST.COMMON.Controls.xml</DocumentationFile>
+    <NoWarn>1587</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HOTINST.COMMON, Version=1.0.1.0, Culture=neutral, PublicKeyToken=14b4e74bddb80fb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HOTINST.COMMON\bin\Debug\HOTINST.COMMON.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\DialogChrome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Dragablz\Themes\Dockablz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Dragablz\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Dragablz\Themes\MahApps.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Dragablz\Themes\MaterialDesign.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\IconPacks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconEntypo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconFontAwesome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconMaterial.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconMaterialLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconModern.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconOcticons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PackIcon\Themes\PackIconSimpleIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\AnimatedContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\AutoEllipsisTextEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Badge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\CollapsableGridSplitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ColorCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\EditableTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FilterableComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FlatGroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FlatTabControlStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FlatTabNoWrapAnimateStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FlatTabNoWrapStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Flyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IPComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IPMaskEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\LoadingIndicatorStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\MetroPasswordBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\MetroTextBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ProgressBarRect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ProgressBarSlide.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ProgressLineStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\SpinEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\SpinnerCogs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ToolBarStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\TransitionContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\TreeViewWin8Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Service\DialogManage\DialogBaseControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Service\DialogManage\DialogContentStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Service\DialogManage\WaitAnimation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Service\DialogManage\WaitProgressDialogControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attaches\Attaches.cs" />
+    <Compile Include="Attaches\DataGridEx.cs" />
+    <Compile Include="Attaches\DraggingAdorner.cs" />
+    <Compile Include="Attaches\TreeItemDragDropEx.cs" />
+    <Compile Include="Attaches\TreeItemEx.cs" />
+    <Compile Include="Attaches\TreeViewEx.cs" />
+    <Compile Include="Behavior\NumberOnlyBehaviour.cs" />
+    <Compile Include="Behavior\PasswordBoxBindingBehavior.cs" />
+    <Compile Include="Behavior\SelectAllOnFocusBehavior.cs" />
+    <Compile Include="Behavior\StylizedBehaviors.cs" />
+    <Compile Include="Behavior\TextBlockAutoToolTipBehavior.cs" />
+    <Compile Include="Behavior\TreeViewBehavior.cs" />
+    <Compile Include="Behavior\UITools.cs" />
+    <Compile Include="Controls\AnimatedContentControl.cs" />
+    <Compile Include="Controls\Badge.cs" />
+    <Compile Include="Controls\ColorCanvas.cs" />
+    <Compile Include="Controls\ColorPicker.cs" />
+    <Compile Include="Controls\ColorSpectrumSlider.cs" />
+    <Compile Include="Controls\DialogChrome.xaml.cs">
+      <DependentUpon>DialogChrome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dragablz\CanvasOrganiser.cs" />
+    <Compile Include="Controls\Dragablz\ContainerCustomisations.cs" />
+    <Compile Include="Controls\Dragablz\Core\CollectionTeaser.cs" />
+    <Compile Include="Controls\Dragablz\Core\Extensions.cs" />
+    <Compile Include="Controls\Dragablz\Core\FuncComparer.cs" />
+    <Compile Include="Controls\Dragablz\Core\HitTest.cs" />
+    <Compile Include="Controls\Dragablz\Core\InterTabTransfer.cs" />
+    <Compile Include="Controls\Dragablz\Core\MultiComparer.cs" />
+    <Compile Include="Controls\Dragablz\Core\Native.cs" />
+    <Compile Include="Controls\Dragablz\Core\SystemCommand.cs" />
+    <Compile Include="Controls\Dragablz\Core\TabHeaderDragStartInformation.cs" />
+    <Compile Include="Controls\Dragablz\Core\WindowMessage.cs" />
+    <Compile Include="Controls\Dragablz\DefaultInterLayoutClient.cs" />
+    <Compile Include="Controls\Dragablz\DefaultInterTabClient.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\Branch.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\BranchAccessor.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\BranchItem.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\BranchResult.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\CouldBeHeaderedStyleSelector.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\DropZone.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\DropZoneLocation.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\Extensions.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\Finder.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\FloatingItemSnapShot.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\FloatRequestedEvent.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\FloatTransfer.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\Layout.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\LayoutAccessor.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\LocationReport.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\LocationReportBuilder.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\LocationReportException.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\LocationSnapShot.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\Tiler.cs" />
+    <Compile Include="Controls\Dragablz\Dockablz\TilerCalculator.cs" />
+    <Compile Include="Controls\Dragablz\DragablzColors.cs" />
+    <Compile Include="Controls\Dragablz\DragablzDragCompletedEventArgs.cs" />
+    <Compile Include="Controls\Dragablz\DragablzDragDeltaEventArgs.cs" />
+    <Compile Include="Controls\Dragablz\DragablzDragStartedEventArgs.cs" />
+    <Compile Include="Controls\Dragablz\DragablzIcon.cs" />
+    <Compile Include="Controls\Dragablz\DragablzItem.cs" />
+    <Compile Include="Controls\Dragablz\DragablzItemEventArgs.cs" />
+    <Compile Include="Controls\Dragablz\DragablzItemsControl.cs" />
+    <Compile Include="Controls\Dragablz\DragablzWindow.cs" />
+    <Compile Include="Controls\Dragablz\EmptyHeaderSizingHint.cs" />
+    <Compile Include="Controls\Dragablz\HeaderedDragablzItem.cs" />
+    <Compile Include="Controls\Dragablz\HeaderedItemViewModel.cs" />
+    <Compile Include="Controls\Dragablz\HorizontalOrganiser.cs" />
+    <Compile Include="Controls\Dragablz\HorizontalPositionMonitor.cs" />
+    <Compile Include="Controls\Dragablz\IInterLayoutClient.cs" />
+    <Compile Include="Controls\Dragablz\IInterTabClient.cs" />
+    <Compile Include="Controls\Dragablz\IItemsOrganiser.cs" />
+    <Compile Include="Controls\Dragablz\IManualInterTabClient.cs" />
+    <Compile Include="Controls\Dragablz\INewTabHost.cs" />
+    <Compile Include="Controls\Dragablz\InterTabController.cs" />
+    <Compile Include="Controls\Dragablz\ItemActionCallbackArgs.cs" />
+    <Compile Include="Controls\Dragablz\LocationChangedEventArgs.cs" />
+    <Compile Include="Controls\Dragablz\LocationHint.cs" />
+    <Compile Include="Controls\Dragablz\MoveItemRequest.cs" />
+    <Compile Include="Controls\Dragablz\NewTabHost.cs" />
+    <Compile Include="Controls\Dragablz\OrderChangedEventArgs.cs" />
+    <Compile Include="Controls\Dragablz\PositionMonitor.cs" />
+    <Compile Include="Controls\Dragablz\Referenceless\AnonymousDisposable.cs" />
+    <Compile Include="Controls\Dragablz\Referenceless\DefaultDisposable.cs" />
+    <Compile Include="Controls\Dragablz\Referenceless\Disposable.cs" />
+    <Compile Include="Controls\Dragablz\Referenceless\ICancelable.cs" />
+    <Compile Include="Controls\Dragablz\Referenceless\SerialDisposable.cs" />
+    <Compile Include="Controls\Dragablz\StackOrganiser.cs" />
+    <Compile Include="Controls\Dragablz\StackPositionMonitor.cs" />
+    <Compile Include="Controls\Dragablz\StoryboardCompletionListener.cs" />
+    <Compile Include="Controls\Dragablz\TabablzControl.cs" />
+    <Compile Include="Controls\Dragablz\TabablzHeaderSizeConverter.cs" />
+    <Compile Include="Controls\Dragablz\TabablzItemStyleSelector.cs" />
+    <Compile Include="Controls\Dragablz\TabEmptiedResponse.cs" />
+    <Compile Include="Controls\Dragablz\Themes\BrushToRadialGradientBrushConverter.cs" />
+    <Compile Include="Controls\Dragablz\Themes\MaterialDesignAssist.cs" />
+    <Compile Include="Controls\Dragablz\Themes\Ripple.cs" />
+    <Compile Include="Controls\Dragablz\Themes\RippleAssist.cs" />
+    <Compile Include="Controls\Dragablz\Themes\SystemCommandIcon.cs" />
+    <Compile Include="Controls\Dragablz\Trapezoid.cs" />
+    <Compile Include="Controls\Dragablz\VerticalOrganiser.cs" />
+    <Compile Include="Controls\Dragablz\VerticalPositionMonitor.cs" />
+    <Compile Include="Controls\Editors\AutoEllipsisTextEdit.cs" />
+    <Compile Include="Controls\Editors\DoubleTextBox.cs" />
+    <Compile Include="Controls\Editors\EditableTextBlock.cs" />
+    <Compile Include="Controls\Editors\EditorBase.cs" />
+    <Compile Include="Controls\Editors\FilterableComboBox.cs" />
+    <Compile Include="Controls\Editors\FilterableComboBoxItem.cs" />
+    <Compile Include="Controls\Editors\IntegerTextBox.cs" />
+    <Compile Include="Controls\Editors\IPComboBox.cs" />
+    <Compile Include="Controls\Editors\IPMaskEdit.cs" />
+    <Compile Include="Controls\Editors\MergableTemplateColumn.cs" />
+    <Compile Include="Controls\Editors\SpinEdit.cs" />
+    <Compile Include="Controls\Editors\TextBoxEllipsis.cs" />
+    <Compile Include="Controls\Editors\TextBoxWithEllipsis.cs" />
+    <Compile Include="Controls\Editors\TreeNodeItem.cs" />
+    <Compile Include="Controls\Flyout\Flyout.cs" />
+    <Compile Include="Controls\Flyout\FlyoutContainer.cs" />
+    <Compile Include="Controls\Layout\CollapsableGridSplitter.cs" />
+    <Compile Include="Controls\Layout\FlatGroupBox.cs" />
+    <Compile Include="Controls\LoadingIndicator.cs" />
+    <Compile Include="Controls\NotifyIcon\Balloon.cs" />
+    <Compile Include="Controls\NotifyIcon\BalloonIcon.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\BalloonFlags.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\IconDataMembers.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\IconState.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\MouseEvent.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\NotifyCommand.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\NotifyIconData.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\NotifyIconVersion.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\Point.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\TrayInfo.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\WinApi.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\WindowClass.cs" />
+    <Compile Include="Controls\NotifyIcon\Interop\WindowMessageSink.cs" />
+    <Compile Include="Controls\NotifyIcon\PopupActivationMode.cs" />
+    <Compile Include="Controls\NotifyIcon\RoutedEventHelper.cs" />
+    <Compile Include="Controls\NotifyIcon\TaskbarIcon.cs" />
+    <Compile Include="Controls\NotifyIcon\TaskbarIcon.Declarations.cs" />
+    <Compile Include="Controls\NotifyIcon\Util.cs" />
+    <Compile Include="Controls\PackIcon\Converter\FlipToScaleXValueConverter.cs" />
+    <Compile Include="Controls\PackIcon\Converter\MarkupConverter.cs" />
+    <Compile Include="Controls\PackIcon\Converter\NullToUnsetValueConverter.cs" />
+    <Compile Include="Controls\PackIcon\PackIconBase.cs" />
+    <Compile Include="Controls\PackIcon\PackIconControl.cs" />
+    <Compile Include="Controls\PackIcon\PackIconEntypo.cs" />
+    <Compile Include="Controls\PackIcon\PackIconEntypoDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconEntypoExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconEntypoKind.cs" />
+    <Compile Include="Controls\PackIcon\PackIconExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconFontAwesome.cs" />
+    <Compile Include="Controls\PackIcon\PackIconFontAwesomeDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconFontAwesomeExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconFontAwesomeKind.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterial.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialKind.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialLight.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialLightDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialLightExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconMaterialLightKind.cs" />
+    <Compile Include="Controls\PackIcon\PackIconModern.cs" />
+    <Compile Include="Controls\PackIcon\PackIconModernDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconModernExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconModernKind.cs" />
+    <Compile Include="Controls\PackIcon\PackIconOcticons.cs" />
+    <Compile Include="Controls\PackIcon\PackIconOcticonsDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconOcticonsExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconOcticonsKind.cs" />
+    <Compile Include="Controls\PackIcon\PackIconSimpleIcons.cs" />
+    <Compile Include="Controls\PackIcon\PackIconSimpleIconsDataFactory.cs" />
+    <Compile Include="Controls\PackIcon\PackIconSimpleIconsExtension.cs" />
+    <Compile Include="Controls\PackIcon\PackIconSimpleIconsKind.cs" />
+    <Compile Include="Controls\ProgressBar.cs" />
+    <Compile Include="Controls\ProgressBarRect.cs" />
+    <Compile Include="Controls\ProgressBarSlide.cs" />
+    <Compile Include="Controls\ProgressLine.cs" />
+    <Compile Include="Controls\SpinnerCogs.cs" />
+    <Compile Include="Controls\TransitionContentControl.cs" />
+    <Compile Include="Controls\ValidationPopup.cs" />
+    <Compile Include="Converters\BooleanAndToVisibilityConverter.cs" />
+    <Compile Include="Converters\ClipConverter.cs" />
+    <Compile Include="Converters\CollectionConverter.cs" />
+    <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="Converters\EqualityToBooleanConverter.cs" />
+    <Compile Include="Converters\EqualityToVisibilityConverter.cs" />
+    <Compile Include="Converters\GetDeeperBrushConverter.cs" />
+    <Compile Include="Converters\GetTranslucentBrushConverter.cs" />
+    <Compile Include="Converters\GoupBoxCornerRadiusConverter.cs" />
+    <Compile Include="Converters\Internal\DropShdwWidthConverter.cs" />
+    <Compile Include="Converters\Internal\IndentConverter.cs" />
+    <Compile Include="Converters\Internal\ProgressRectConverter.cs" />
+    <Compile Include="Converters\Internal\TreeLineConverter.cs" />
+    <Compile Include="Converters\Internal\TreeViewItemEx.cs" />
+    <Compile Include="Converters\IsItemLastConverter.cs" />
+    <Compile Include="Converters\MarkupConverter.cs" />
+    <Compile Include="Converters\NullToUnsetValueConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\RadiusConverter.cs" />
+    <Compile Include="Converters\ReverseBooleanConverter.cs" />
+    <Compile Include="Converters\ShowDefaultCloseButtonConverter.cs" />
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
+    <Compile Include="Core\Animations.cs" />
+    <Compile Include="Core\AnimationSpeed.cs" />
+    <Compile Include="Core\BindableBase.cs" />
+    <Compile Include="Core\ColorUtilities.cs" />
+    <Compile Include="Core\DelegateCommand.cs" />
+    <Compile Include="Core\DoubleUtil.cs" />
+    <Compile Include="Core\Editors\CursorHandler.cs" />
+    <Compile Include="Core\Editors\DoubleValueHandler.cs" />
+    <Compile Include="Core\Editors\ExtendedScrollingAdorner.cs" />
+    <Compile Include="Core\Editors\IntegerValueHandler.cs" />
+    <Compile Include="Core\Editors\InvalidInputBehavior.cs" />
+    <Compile Include="Core\Editors\MaxValidation.cs" />
+    <Compile Include="Core\Editors\MinValidation.cs" />
+    <Compile Include="Core\Editors\StringValidation.cs" />
+    <Compile Include="Core\Editors\TextBoxSelectionAdorner.cs" />
+    <Compile Include="Core\Editors\ThumbDirection.cs" />
+    <Compile Include="Core\Editors\ThumbPosition.cs" />
+    <Compile Include="Core\Ellipsis.cs" />
+    <Compile Include="Core\HsvColor.cs" />
+    <Compile Include="Core\ICloneable.cs" />
+    <Compile Include="Core\SlideFromDirection.cs" />
+    <Compile Include="Core\VisualStates.cs" />
+    <Compile Include="Extension\AnimationExtension\Blink.cs" />
+    <Compile Include="Extension\AnimationExtension\Opacity.cs" />
+    <Compile Include="Extension\ObservableExtension.cs" />
+    <Compile Include="Helper\ThemeHelper.cs" />
+    <Compile Include="Core\TreeRootLine.cs" />
+    <Compile Include="Core\UIExtensions.cs" />
+    <Compile Include="Extension\AnimationExtension\BaseTransitionzParams.cs" />
+    <Compile Include="Extension\AnimationExtension\Fade.cs" />
+    <Compile Include="Extension\AnimationExtension\MarginParamsExtension.cs" />
+    <Compile Include="Extension\AnimationExtension\OpacityParamsExtension.cs" />
+    <Compile Include="Extension\AnimationExtension\Slide.cs" />
+    <Compile Include="Extension\AnimationExtension\Transitionz.cs" />
+    <Compile Include="Extension\AnimationExtension\TranslateParamsExtension.cs" />
+    <Compile Include="Extension\BrushColorExtensions.cs" />
+    <Compile Include="Extension\ConversionExtensions.cs" />
+    <Compile Include="Extension\EnumerationExtension.cs" />
+    <Compile Include="Extension\EnumExtention.cs" />
+    <Compile Include="Extension\SwithCaseExtension.cs" />
+    <Compile Include="Helper\BitmapImageHelper.cs" />
+    <Compile Include="Helper\ControlsHelper.cs" />
+    <Compile Include="Helper\DialogHelper.cs" />
+    <Compile Include="Helper\PasswordBoxHelper.cs" />
+    <Compile Include="Helper\TextBoxHelper.cs" />
+    <Compile Include="Helper\TreeViewHelper.cs" />
+    <Compile Include="Helper\UIServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service\DialogManage\Contracts\ICustomContentDialog.cs" />
+    <Compile Include="Service\DialogManage\Contracts\IDialog.cs" />
+    <Compile Include="Service\DialogManage\Contracts\IDialogManager.cs" />
+    <Compile Include="Service\DialogManage\Contracts\IMessageDialog.cs" />
+    <Compile Include="Service\DialogManage\Contracts\IProgressDialog.cs" />
+    <Compile Include="Service\DialogManage\Contracts\IWaitDialog.cs" />
+    <Compile Include="Service\DialogManage\CustomContentDialog.cs" />
+    <Compile Include="Service\DialogManage\DialogBase.cs" />
+    <Compile Include="Service\DialogManage\DialogBaseControl.xaml.cs">
+      <DependentUpon>DialogBaseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DialogManage\DialogCloseBehavior.cs" />
+    <Compile Include="Service\DialogManage\DialogLayeringHelper.cs" />
+    <Compile Include="Service\DialogManage\DialogManager.cs" />
+    <Compile Include="Service\DialogManage\DialogIcon.cs" />
+    <Compile Include="Service\DialogManage\DialogMode.cs" />
+    <Compile Include="Service\DialogManage\DialogResultState.cs" />
+    <Compile Include="Service\DialogManage\IDialogHost.cs" />
+    <Compile Include="Service\DialogManage\ImagingExtensions.cs" />
+    <Compile Include="Service\DialogManage\MessageDialog.cs" />
+    <Compile Include="Service\DialogManage\WaitAnimation.xaml.cs">
+      <DependentUpon>WaitAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DialogManage\WaitProgressDialog.cs" />
+    <Compile Include="Service\DialogManage\WaitProgressDialogControl.xaml.cs">
+      <DependentUpon>WaitProgressDialogControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DialogService.cs" />
+    <Compile Include="VisualUtil\PermissionHelper.cs" />
+    <Compile Include="VisualUtil\VisualUtils.cs" />
+    <Compile Include="Win32\Constants.cs" />
+    <Compile Include="Win32\RECT.cs" />
+    <Compile Include="Win32\UnsafeNativeMethods.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Service\DialogManage\Icons\deny_128px.png" />
+    <Resource Include="Service\DialogManage\Icons\error_128px.png" />
+    <Resource Include="Service\DialogManage\Icons\hint_128px.png" />
+    <Resource Include="Service\DialogManage\Icons\info_128px.png" />
+    <Resource Include="Service\DialogManage\Icons\question_128px.png" />
+    <Resource Include="Service\DialogManage\Icons\stop_128px.png" />
+    <Resource Include="Service\DialogManage\Icons\warning_128px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
